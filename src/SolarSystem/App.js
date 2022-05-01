@@ -51,7 +51,7 @@ function FPSControls() {
   let S = useKeyPress("s");
   let D = useKeyPress("d");
   let UP = useKeyPress(" ");
-  let DOWN = useKeyPress("Shift");
+  let DOWN = useKeyPress("e");
 
   const {camera} = useThree();
 
