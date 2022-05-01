@@ -12,16 +12,16 @@ function Stars() {
   });
 
   const [geo, mat, coords] = useMemo(() => {
-    const geo = new THREE.SphereBufferGeometry(1, 10, 10);
+    const geo = new THREE.SphereBufferGeometry(1, 5, 5);
     const mat = new THREE.MeshBasicMaterial({
       color: new THREE.Color("white")
     });
-    const coords = new Array(10000)
+    const coords = new Array(2000)
       .fill()
       .map(i => [
-        randomNumber(-4000, 4000),
-        randomNumber(-4000, 4000),
-        randomNumber(-4000, 4000),
+        randomNumber(-2000, 2000),
+        randomNumber(-2000, 2000),
+        randomNumber(-2000, 2000),
       ]);
     return [geo, mat, coords];
   }, []);
