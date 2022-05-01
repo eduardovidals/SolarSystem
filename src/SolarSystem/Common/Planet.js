@@ -14,7 +14,7 @@ function Planet(props) {
 
 
   useFrame(({clock}) => {
-    planetObjRef.current.rotation.y += planet.orbitingSpeed;
+          planetObjRef.current.rotation.y += planet.orbitingSpeed;
     planetRef.current.rotation.y += planet.rotatingSpeed;
     planetRef.current.position.x = planet.position;
 
@@ -33,11 +33,13 @@ function Planet(props) {
           <sphereGeometry args={[planet.size, 32, 32]}/>
           <meshStandardMaterial map={textureLoader.load(planet.texture)}/>
         </mesh>
-        {planet.ring ?
+        {
+          planet.ring ?
           <mesh ref={ringRef}>
             <ringGeometry args={[ringSize, 50, 50]}/>
-            <meshBasicMaterial map={textureLoader.load(planet.ringTexture)} side={THREE.DoubleSide}/>
-          </mesh> : null}
+            <meshBasicMaterial map={textureLoader.load(planet.ringTexture)} side={THREE.DoubleSide} transparent={true}/>
+          </mesh> : null
+        }
         <Ecliptic planet={planet}/>
       </object3D>
     </>
