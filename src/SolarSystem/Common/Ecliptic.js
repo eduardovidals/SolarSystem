@@ -1,5 +1,6 @@
 import * as THREE from "three";
-import React from "react";
+import React, {useLayoutEffect, useRef} from "react";
+import {BufferGeometry} from "three";
 
 function Ecliptic(props) {
   const {planet} = props;
@@ -10,12 +11,23 @@ function Ecliptic(props) {
     const z = planet.position * Math.cos(angle);
     points.push(new THREE.Vector3(x, 0, z));
   }
-
   points.push(points[0]);
 
-  const lineGeometry = new THREE.BufferGeometry().setFromPoints(points);
+  console.log("points: ");
+  console.log(points);
+
+  const ref = useRef (null);
+
+  useLayoutEffect(() => {
+    if (ref.current) {
+      ref.current.setFromPoints(points);
+    }
+  }, []);
+
+
   return (
-    <line geometry={lineGeometry}>
+    <line>
+      <bufferGeometry attach={'geometry'} ref={ref}/>
       <lineBasicMaterial attach="material" color="#BFBBDA" linewidth={10}/>
     </line>
   );

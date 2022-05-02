@@ -35,4 +35,4 @@ function Stars() {
   );
 }
 
-export default  Stars;
+export default Stars;
